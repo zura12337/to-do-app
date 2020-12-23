@@ -2,17 +2,12 @@ import React from "react";
 // @ts-ignore
 import { Droppable } from "react-beautiful-dnd";
 import ListItem from "./ListItem";
+import Item from "./Item";
 
 interface Props {
   tasks: Array<any>;
   listName: string;
   listTitle: string;
-}
-
-interface Item {
-  name: string;
-  index: number;
-  type: string;
 }
 
 export default function Block({ tasks, listName, listTitle }: Props) {
@@ -34,7 +29,7 @@ export default function Block({ tasks, listName, listTitle }: Props) {
             {tasks.map(
               ({ name, type }: Item, index: number) =>
                 type === listName && (
-                  <ListItem key={index} name={name} index={index} />
+                  <ListItem type={type} key={index} name={name} index={index} />
                 )
             )}
             {provided.placeholder}

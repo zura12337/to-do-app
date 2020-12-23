@@ -1,13 +1,9 @@
 import React from "react";
 // @ts-ignore
 import { Draggable } from "react-beautiful-dnd";
+import Item from "./Item";
 
-interface Item {
-  name: string;
-  index: number;
-}
-
-export default function ListItem({ name, index }: Item) {
+export default function ListItem({ name, index, type }: Item) {
   return (
     <Draggable draggableId={`${name}-${index}`} index={index} key={index}>
       {(provided: any, snapshot: any) => (
@@ -16,7 +12,12 @@ export default function ListItem({ name, index }: Item) {
           {...provided.dragHandleProps}
           ref={provided.innerRef}
           style={{
-            backgroundColor: snapshot.isDragging ? "#ebebeb" : "#ffffff",
+            backgroundColor: snapshot.isDragging
+              ? "#ebebeb"
+              : type === "done"
+              ? "#888888"
+              : "#ffffff",
+            color: type === "done" && !snapshot.isDragging && "white",
             animation: ".2s all",
             ...provided.draggableProps.style,
           }}
