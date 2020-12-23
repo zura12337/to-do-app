@@ -135,7 +135,92 @@ nav .new-task-form .submit-form {
 }
 
 .list .done {
-  background-color: #888888;
   color: white;
+}
+
+.trash {
+  position: absolute;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  top: 85%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.trash-inner {
+  position: relative;
+}
+
+.trash-popover {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: 10vw;
+  background-color: #757575;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: "Lato";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.trash-popover .popover-close {
+  height: 20px;
+  background: none;
+  border: none;
+  color: white;
+  outline: none;
+}
+
+.trash-popover::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #757575;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  top: 55px;
+  left: 46%;
+  position: absolute;
+}
+
+.trash-enter {
+  opacity: 0;
+}
+
+.trash-enter-active {
+  opacity: 1;
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
+.trash-exit {
+  opacity: 1;
+}
+
+.trash-exit-active {
+  opacity: 0;
+  -webkit-transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, -webkit-transform 300ms;
+  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
 }
 /*# sourceMappingURL=index.css.map */

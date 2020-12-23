@@ -111,3 +111,65 @@ nav {
     color: white;
   }
 }
+
+.trash {
+  position: absolute;
+  width: max-content;
+  user-select: none;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.trash-inner {
+  position: relative;
+}
+
+.trash-popover {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 10vw;
+  background-color: #757575;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: "Lato";
+  display: flex;
+  box-shadow: $shadow;
+  color: white;
+  .popover-close {
+    height: 20px;
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+  }
+}
+
+.trash-popover::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #757575;
+  transform: rotateZ(45deg);
+  top: 55px;
+  left: 46%;
+  position: absolute;
+}
+
+.trash-enter {
+  opacity: 0;
+}
+.trash-enter-active {
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+.trash-exit {
+  opacity: 1;
+}
+.trash-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
