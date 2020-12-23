@@ -30,9 +30,9 @@ export default function List() {
   return (
     <div className="content">
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Block tasks={tasks} listName="to-do" />
-        <Block tasks={tasks} listName="in-progress" />
-        <Block tasks={tasks} listName="done" />
+        <Block tasks={tasks} listName="to-do" listTitle={"To Do"} />
+        <Block tasks={tasks} listName="in-progress" listTitle={"In Progress"} />
+        <Block tasks={tasks} listName="done" listTitle={"Done"} />
       </DragDropContext>
     </div>
   );

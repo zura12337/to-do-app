@@ -6,6 +6,7 @@ import ListItem from "./ListItem";
 interface Props {
   tasks: Array<any>;
   listName: string;
+  listTitle: string;
 }
 
 interface Item {
@@ -14,7 +15,7 @@ interface Item {
   type: string;
 }
 
-export default function Block({ tasks, listName }: Props) {
+export default function Block({ tasks, listName, listTitle }: Props) {
   return (
     <Droppable droppableId={listName}>
       {(provided: any, snapshot: any) => (
@@ -24,7 +25,7 @@ export default function Block({ tasks, listName }: Props) {
             backgroundColor: snapshot.isDraggingOver ? "#e2e2e2" : "#F2EFEF",
           }}
         >
-          <h3 className="title">To Do</h3>
+          <h3 className="title">{listTitle}</h3>
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
