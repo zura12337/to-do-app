@@ -12,7 +12,6 @@ export const useLocalStorage = (initialState: [object]) => {
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(value));
-    setValue(value);
   }, [value]);
 
   return [value, setValue];

@@ -4,15 +4,14 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Block from "./Block";
 // @ts-ignore
 import { CSSTransition } from "react-transition-group";
-import { useLocalStorage } from "../services/tasks";
 
-export default function List() {
-  const [tasks, setTasks] = useLocalStorage([{}]);
+// @ts-ignore
+export default function List({ tasks, setTasks }) {
   const [showPopover, setShowPopover] = useState(false);
 
   const handleDragEnd = (result: any) => {
     if (!result.destination) return;
-    const newTasks = [...tasks];
+    let newTasks = [...tasks];
     if (result.destination.droppableId === "trash") {
       newTasks.splice(result.source.index, 1);
     } else {
@@ -51,7 +50,7 @@ export default function List() {
                     <p>Drag Any item here to remove them. 🗑</p>
                   </div>
                 </CSSTransition>
-                {/* {showPopover && (
+                {showPopover && (
                   <div className="trash-popover">
                     <p>Drag Any item here to remove them. 🗑</p>
                     <button
@@ -61,7 +60,7 @@ export default function List() {
                       X
                     </button>
                   </div>
-                )} */}
+                )}
                 <h3 onClick={() => setShowPopover(!showPopover)}>🗑</h3>
               </div>
             </div>

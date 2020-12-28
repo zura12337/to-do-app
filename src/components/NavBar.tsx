@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useLocalStorage } from "../services/tasks";
 
-export default function NavBar() {
+// @ts-ignore
+export default function NavBar({ tasks, setTasks }) {
   const [expanded, setExpanded] = useState(false);
   const [task, setTask] = useState("");
-  const [tasks, setTasks] = useLocalStorage([{}]);
 
   const handleClick = () => {
     setExpanded(!expanded);
@@ -14,7 +13,7 @@ export default function NavBar() {
     e.preventDefault();
     setExpanded(false);
     if (task.length < 1) return;
-    setTasks((tasks: [object]) => [...tasks, { type: "to-do", name: task }]);
+    setTasks([{ type: "to-do", name: task }, ...tasks]);
   };
 
   return (
