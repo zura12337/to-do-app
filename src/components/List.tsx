@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { getTasks, reorderTasks } from "../services/tasks";
+import React, { useState } from "react";
 // @ts-ignore
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import Block from "./Block";
 // @ts-ignore
 import { CSSTransition } from "react-transition-group";
+import { useLocalStorage } from "../services/tasks";
 
 export default function List() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useLocalStorage([{}]);
   const [showPopover, setShowPopover] = useState(false);
 
-  useEffect(() => {
-    const newTasks: [] = getTasks();
-    setTasks(newTasks);
-  }, []);
-
   const handleDragEnd = (result: any) => {
-    console.log(result.destination);
     if (!result.destination) return;
     const newTasks = [...tasks];
     if (result.destination.droppableId === "trash") {
@@ -30,7 +24,6 @@ export default function List() {
       const [reorderedTasks] = newTasks.splice(result.source.index, 1);
       newTasks.splice(result.destination.index, 0, reorderedTasks);
     }
-    reorderTasks(newTasks);
     setTasks(newTasks);
   };
 

@@ -7,9 +7,6 @@ export default function ListItem({ name, index, type }: Item) {
   return (
     <Draggable draggableId={`${name}-${index}`} index={index} key={index}>
       {(provided: any, snapshot: any) => {
-        if (snapshot.draggingOver === "trash") {
-          console.log(snapshot);
-        }
         return (
           <div
             {...provided.draggableProps}

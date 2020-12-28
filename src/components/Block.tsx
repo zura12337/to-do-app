@@ -26,12 +26,18 @@ export default function Block({ tasks, listName, listTitle }: Props) {
             {...provided.droppableProps}
             className="list"
           >
-            {tasks.map(
-              ({ name, type }: Item, index: number) =>
-                type === listName && (
-                  <ListItem type={type} key={index} name={name} index={index} />
-                )
-            )}
+            {tasks.length > 0 &&
+              tasks.map(
+                ({ name, type }: Item, index: number) =>
+                  type === listName && (
+                    <ListItem
+                      type={type}
+                      key={index}
+                      name={name}
+                      index={index}
+                    />
+                  )
+              )}
             {provided.placeholder}
           </div>
         </div>
